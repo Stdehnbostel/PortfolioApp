@@ -6,7 +6,7 @@
 //
 
 import CoreData
-internal import Combine
+import Combine
 
 class DataController: ObservableObject {
     @Published var selectedFilter: Filter? = Filter.all
@@ -14,18 +14,28 @@ class DataController: ObservableObject {
     let container: NSPersistentCloudKitContainer
     
     init(inMemory: Bool = false) {
-         self.container = NSPersistentCloudKitContainer(name: "Main")
+        self.container = NSPersistentCloudKitContainer(name: "Main")
          
-         if inMemory {
-             container.persistentStoreDescriptions.first?.url = URL(filePath: "/dev/null")
-         }
-         
-         container.loadPersistentStores {
-             storeDescription, error in
-             if let error {
-                 fatalError("Fatal error loading persistent stores: \(error)")
-             }
-         }
+        if inMemory {
+            container.persistentStoreDescriptions.first?.url = URL(filePath: "/dev/null")
+        }
+        
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+        
+        container.persistentStoreDescriptions.first?.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+        NotificationCenter.default.addObserver(forName: .NSPersistentStoreRemoteChange, object: container.persistentStoreCoordinator, queue: .main, using: remoteStoreChanged)
+        
+        container.loadPersistentStores {
+            storeDescription, error in
+            if let error {
+                fatalError("Fatal error loading persistent stores: \(error)")
+            }
+        }
+    }
+    
+    func remoteStoreChanged(_ notification: Notification) {
+        objectWillChange.send()
     }
     
     func createSampleData() {
@@ -41,7 +51,7 @@ class DataController: ObservableObject {
                 issue.title = "Issue \(i)-\(j)"
                 issue.content = "Content for issue \(i)-\(j)"
                 issue.creationDate = Date.now
-                issue.completion = Bool.random()
+                issue.completed = Bool.random()
                 issue.priority = Int16.random(in: 1...2)
                 tag.addToIssues(issue)
             }
