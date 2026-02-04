@@ -22,7 +22,7 @@ struct IssueRow: View {
                         .font(.headline)
                         .lineLimit(1)
                     
-                    Text("No Tags")
+                    Text(issue.issueTagsList)
                         .foregroundStyle(.secondary)
                         .lineLimit(1)
                 }

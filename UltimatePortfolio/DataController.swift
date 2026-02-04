@@ -10,6 +10,7 @@ import Combine
 
 class DataController: ObservableObject {
     @Published var selectedFilter: Filter? = Filter.all
+    @Published var selectedIssue: Issue?
 
     let container: NSPersistentCloudKitContainer
     
@@ -105,4 +106,14 @@ class DataController: ObservableObject {
         dataController.createSampleData()
         return dataController
     }()
+    
+    func missingTags(from issue: Issue) -> [Tag] {
+        let request = Tag.fetchRequest()
+        let allTags = (try? container.viewContext.fetch(request)) ?? []
+        
+        let allTagsSet = Set(allTags)
+        let difference = allTagsSet.symmetricDifference(Set(issue.issueTag))
+        
+        return difference.sorted()
+    }
 }
