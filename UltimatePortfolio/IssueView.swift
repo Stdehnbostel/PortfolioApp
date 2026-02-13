@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-internal import CoreData
+import CoreData
 
 struct IssueView: View {
     @EnvironmentObject var dataController: DataController
@@ -75,6 +75,9 @@ struct IssueView: View {
             }
         }
         .disabled(issue.isDeleted)
+        .onReceive(issue.objectWillChange) { _ in
+            dataController.queueSave()
+        }
     }
 }
 
