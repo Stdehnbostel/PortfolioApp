@@ -8,12 +8,27 @@
 import CoreData
 import Combine
 
+enum SortType: String {
+    case dateCreated = "creationDate"
+    case dateModified = "modifcationDate"
+}
+
+enum Status {
+    case all, open, closed
+}
+
 class DataController: ObservableObject {
     @Published var selectedFilter: Filter? = Filter.all
     @Published var selectedIssue: Issue?
     
     @Published var filterText = ""
     @Published var filterTokens: [Tag] = []
+    
+    @Published var filterEnabled = false
+    @Published var filterPriority = -1
+    @Published var filterStatus = Status.all
+    @Published var sortType = SortType.dateCreated
+    @Published var sortNewestFirst = true
     
     private var saveTask: Task<Void, Error>?
 
@@ -152,7 +167,7 @@ class DataController: ObservableObject {
         var predicates = [NSPredicate]()
         
         if let tag = filter.tag {
-            let tagPredicate = NSPredicate(format: "tags CONTAIN %@", tag)
+            let tagPredicate = NSPredicate(format: "tags CONTAINS %@", tag)
             predicates.append(tagPredicate)
         } else {
             let datePredicate = NSPredicate(format: "modificationDate > %@", filter.minModificationDate as NSDate)
@@ -172,15 +187,46 @@ class DataController: ObservableObject {
             let tokenPredicate = NSPredicate(format: "ANY tags in %@", filterTokens)
             predicates.append(tokenPredicate)
         }
+        
+        if filterEnabled {
+            if filterPriority >= 0 {
+                let priorityFilter = NSPredicate(format: "priority = %d", filterPriority)
+                predicates.append(priorityFilter)
+            }
+            
+            if filterStatus != .all {
+                let lookForClosed = filterStatus == .closed
+                let statusFilter = NSPredicate(format: "comledted = %@", NSNumber(value: lookForClosed))
+                predicates.append(statusFilter)
+            }
+        }
        
         let request = Issue.fetchRequest()
-        
+        request.sortDescriptors = [NSSortDescriptor(key: sortType.rawValue, ascending: sortNewestFirst)]
         request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         let allIssues = (try? container.viewContext.fetch(request)) ?? []
         
-        
-        
-        
         return allIssues.sorted()
+    }
+    
+    func newIssue() {
+        let issue = Issue(context: container.viewContext)
+        issue.title = "New Issue"
+        issue.creationDate = .now
+        issue.priority = 1
+        
+        if let tag = selectedFilter?.tag {
+            issue.addToTags(tag)
+        }
+        
+        save()
+        
+        selectedIssue = issue
+    }
+    
+    func newTag() {
+        let tag = Tag(context: container.viewContext)
+        tag.id = UUID()
+        tag.name = "New Tag"
     }
 }
