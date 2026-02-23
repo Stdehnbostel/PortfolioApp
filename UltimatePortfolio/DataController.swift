@@ -206,7 +206,7 @@ class DataController: ObservableObject {
         request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         let allIssues = (try? container.viewContext.fetch(request)) ?? []
         
-        return allIssues.sorted()
+        return allIssues
     }
     
     func newIssue() {
@@ -228,5 +228,35 @@ class DataController: ObservableObject {
         let tag = Tag(context: container.viewContext)
         tag.id = UUID()
         tag.name = "New Tag"
+    }
+    
+    func count<T>(for fetchRequest: NSFetchRequest<T>) -> Int {
+        (try? container.viewContext.count(for: fetchRequest)) ?? 0
+    }
+    
+    func hasEarned(award: Award) -> Bool {
+        switch award.criterion {
+        case "issues":
+            // certain nr of issues
+            let fetchRequest = Issue.fetchRequest()
+            let awardCount = count(for: fetchRequest)
+            return awardCount >= award.value
+        case "closed":
+            // return true if they closed a certain nr of issues
+            let fetchRequest = Issue.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "completed = true")
+            let awardCount = count(for: fetchRequest)
+            return awardCount >= award.value
+        case "tags":
+            // return true if they creqated a certain nr of tags
+            let fetchRequest = Tag.fetchRequest()
+            let awardCount = count(for: fetchRequest)
+            return awardCount >= award.value
+            
+        default:
+            // unknown award criterion; this should never be allowed
+            // fatalError("Unknown criterion for award: \(award.criterion)")
+            return false
+        }
     }
 }
