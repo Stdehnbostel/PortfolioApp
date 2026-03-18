@@ -22,6 +22,10 @@ struct Filter: Identifiable, Hashable {
         minModificationDate: Date.now.addingTimeInterval(-86_400 * 7)
     )
     
+    var activeIssueCount: Int {
+        tag?.tagActiveIssues.count ?? 0
+    }
+    
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
