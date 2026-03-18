@@ -17,7 +17,7 @@ struct Filter: Identifiable, Hashable {
     static var all = Filter(id: UUID(), name: "All issues", icon: "tray")
     static var recent = Filter(
         id: UUID(),
-        name: "Recent issues",
+        name: NSLocalizedString("Recent issues", comment: "Smart filter for recent issues"),
         icon: "clock",
         minModificationDate: Date.now.addingTimeInterval(-86_400 * 7)
     )
