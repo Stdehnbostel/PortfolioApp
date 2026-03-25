@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct DetailView: View {
-    @EnvironmentObject var DataController: DataController
-    
+    @EnvironmentObject var dataController: DataController
+
     var body: some View {
         VStack {
-            if let issue = DataController.selectedIssue {
+            if let issue = dataController.selectedIssue {
                 IssueView(issue: issue)
             } else {
                 NoIssueView()

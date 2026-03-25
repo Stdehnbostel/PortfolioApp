@@ -11,19 +11,27 @@ import CoreData
 struct IssueView: View {
     @EnvironmentObject var dataController: DataController
     @ObservedObject var issue: Issue
-    
+
     var body: some View {
         Form {
             Section {
                 VStack(alignment: .leading) {
-                    TextField("Title", text: $issue.issueTitle, prompt: Text("Enter your issue title here"))
-                    
-                    Text("**Modified:** \(issue.modificationDate?.formatted(date: .long, time: .shortened) ?? "Never modified")")
-                    
-                    Text("**Status:** \(issue.issueStatus)")
+                    TextField(
+                        "Title",
+                        text: $issue.issueTitle, prompt: Text("Enter your issue title here")
+                    )
+
+                    Text(
+                        // swiftlint:disable:next line_length
+                        "**Modified:** \(issue.modificationDate?.formatted(date: .long, time: .shortened) ?? "Never modified")"
+                    )
+
+                    Text(
+                        "**Status:** \(issue.issueStatus)"
+                    )
                         .foregroundStyle(.secondary)
                 }
-                
+
                 Picker("Priority", selection: $issue.priority) {
                     Text("Low").tag(Int16(0))
                     Text("Medium").tag(Int16(1))
@@ -31,14 +39,17 @@ struct IssueView: View {
                 }
                 TagsMenuView(issue: issue)
             }
-            
+
             Section {
                 VStack(alignment: .leading) {
                     Text("Basic information")
                         .font(.title2)
                         .foregroundStyle(.secondary)
-                    
-                    TextField("Description", text: $issue.issueContent, prompt: Text("Enter your issue description here"), axis: .vertical)
+
+                    TextField(
+                        "Description",
+                        text: $issue.issueContent, prompt: Text("Enter your issue description here"), axis: .vertical
+                    )
                 }
             }
         }

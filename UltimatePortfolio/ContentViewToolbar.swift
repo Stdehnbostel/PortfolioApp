@@ -9,15 +9,15 @@ import SwiftUI
 
 struct ContentViewToolbar: View {
     @EnvironmentObject var dataController: DataController
-    
+
     var body: some View {
         Menu {
             Button(dataController.filterEnabled ? "Turn filter off" : "Turn filter on") {
                 dataController.filterEnabled.toggle()
             }
-            
+
             Divider()
-            
+
             Menu("Sort By") {
                 Picker("Sort By", selection: $dataController.sortType) {
                     Text("Date Created").tag(SortType.dateCreated)
@@ -46,10 +46,9 @@ struct ContentViewToolbar: View {
             Label("Filter", systemImage: "line.3.horizontal.decrease.circle")
                 .symbolVariant(dataController.filterEnabled ? .fill : .none)
         }
-        
+
         Button(action: dataController.newIssue) {
             Label("New Issue", systemImage: "square.and.pencil")
-            
         }
     }
 }
