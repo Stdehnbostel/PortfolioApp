@@ -9,7 +9,7 @@ import CoreData
 import Testing
 @testable import UltimatePortfolio
 
-struct UltimatePortfolioTestsBaseTestCases {
+class UltimatePortfolioTestsBaseTestCases {
     var dataController: DataController
     var managedObjectContext: NSManagedObjectContext
     
