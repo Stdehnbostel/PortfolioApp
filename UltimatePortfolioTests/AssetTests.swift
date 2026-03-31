@@ -18,7 +18,7 @@ struct AssetTests {
             #expect(UIColor(named: color) != nil, "Failed to load '\(color)' from asset catalog")
         }
     }
-    
+
     @Test func testAwardsLoadCorrectly() {
         #expect(Award.allAwards.isEmpty == false, "Failed to load awards from JSON")
     }

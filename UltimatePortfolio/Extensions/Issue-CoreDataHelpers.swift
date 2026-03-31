@@ -40,7 +40,7 @@ extension Issue {
         return issue
     }
 
-    var issueTag: [Tag] {
+    var issueTags: [Tag] {
         let result = tags?.allObjects as? [Tag] ?? []
         return result.sorted()
     }
@@ -53,7 +53,7 @@ extension Issue {
         if tags.count == 0 {
             return "No tags"
         } else {
-            return issueTag.map(\.tagName).formatted()
+            return issueTags.map(\.tagName).formatted()
         }
     }
 

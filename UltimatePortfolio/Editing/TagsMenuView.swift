@@ -14,7 +14,7 @@ struct TagsMenuView: View {
     var body: some View {
         Menu {
             // show each selected Tag first
-            ForEach(issue.issueTag) { tag in
+            ForEach(issue.issueTags) { tag in
                 Button {
                     issue.removeFromTags(tag)
                 } label: {

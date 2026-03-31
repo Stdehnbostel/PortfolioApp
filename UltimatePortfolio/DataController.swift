@@ -88,16 +88,16 @@ class DataController: ObservableObject {
             }
         }
     }
-    
+
     static let model: NSManagedObjectModel = {
         guard let url = Bundle.main.url(forResource: "Main", withExtension: "momd") else {
             fatalError("Failed to locate model file.")
         }
-        
+
         guard let managedObjectModel = NSManagedObjectModel(contentsOf: url) else {
             fatalError("Failed to load model file.")
         }
-        
+
         return managedObjectModel
     }()
 
@@ -192,7 +192,7 @@ class DataController: ObservableObject {
         let allTags = (try? container.viewContext.fetch(request)) ?? []
 
         let allTagsSet = Set(allTags)
-        let difference = allTagsSet.symmetricDifference(Set(issue.issueTag))
+        let difference = allTagsSet.symmetricDifference(Set(issue.issueTags))
 
         return difference.sorted()
     }
