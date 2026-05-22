@@ -14,6 +14,7 @@ struct DetailView: View {
         VStack {
             if let issue = dataController.selectedIssue {
                 IssueView(issue: issue)
+                // NoIssueView()
             } else {
                 NoIssueView()
             }

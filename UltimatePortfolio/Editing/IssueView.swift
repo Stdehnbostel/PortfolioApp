@@ -23,9 +23,9 @@ struct IssueView: View {
 
                     Text(
                         // swiftlint:disable:next line_length
-                        "**Modified:** \(issue.modificationDate?.formatted(date: .long, time: .shortened) ?? "Never modified")"
+                        "**Modified:** \(issue.issueModificationDate.formatted(date: .long, time: .shortened))"
                     )
-
+                    .foregroundStyle(.secondary)
                     Text(
                         "**Status:** \(issue.issueStatus)"
                     )
@@ -60,7 +60,7 @@ struct IssueView: View {
         .onSubmit {
             dataController.save()
         }
-        toolbar {
+        .toolbar {
             IssueViewToolbar(issue: issue)
         }
     }
