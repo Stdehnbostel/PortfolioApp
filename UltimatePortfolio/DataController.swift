@@ -7,6 +7,7 @@
 
 import CoreData
 import Combine
+import SwiftUI
 
 enum SortType: String {
     case dateCreated = "creationDate"
@@ -86,6 +87,13 @@ class DataController: ObservableObject {
             if let error {
                 fatalError("Fatal error loading persistent stores: \(error)")
             }
+
+            // Enable Ui tets to start from a clear slate
+            #if DEBUG
+            if CommandLine.arguments.contains("enable-testing") {
+                self.deleteAll()
+            }
+            #endif
         }
     }
 
@@ -269,7 +277,7 @@ class DataController: ObservableObject {
         }
 
         save()
-
+        
         selectedIssue = issue
     }
 

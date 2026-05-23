@@ -6,7 +6,28 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildRule section */
+		F8BBE4862FC0806E00810EA6 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.xcode.tools.swift.compiler;
+			fileType = text.plist.stringsdict;
+			inputFiles = (
+			);
+			isEditable = 1;
+			outputFiles = (
+			);
+			script = "# builtin-copyStrings\n";
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXContainerItemProxy section */
+		F809651E2F7D1371006306BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F887D0232F1AA8BF002BC544 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F887D02A2F1AA8BF002BC544;
+			remoteInfo = UltimatePortfolio;
+		};
 		F86D12842F753CD200D52E77 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F887D0232F1AA8BF002BC544 /* Project object */;
@@ -17,11 +38,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F80965182F7D1371006306BC /* UltimatePortfolioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UltimatePortfolioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F86D12802F753CD200D52E77 /* UltimatePortfolioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UltimatePortfolioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F887D02B2F1AA8BF002BC544 /* UltimatePortfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UltimatePortfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		F8BBE4882FC0817300810EA6 /* Exceptions for "UltimatePortfolio" folder in "Compile Sources" phase from "UltimatePortfolio" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = F887D0272F1AA8BF002BC544 /* Sources */;
+			membershipExceptions = (
+				Localizable.xcstrings,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		F80965192F7D1371006306BC /* UltimatePortfolioUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = UltimatePortfolioUITests;
+			sourceTree = "<group>";
+		};
 		F86D12812F753CD200D52E77 /* UltimatePortfolioTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = UltimatePortfolioTests;
@@ -29,12 +66,22 @@
 		};
 		F887D02D2F1AA8BF002BC544 /* UltimatePortfolio */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F8BBE4882FC0817300810EA6 /* Exceptions for "UltimatePortfolio" folder in "Compile Sources" phase from "UltimatePortfolio" target */,
+			);
 			path = UltimatePortfolio;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F80965152F7D1371006306BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F86D127D2F753CD200D52E77 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -57,6 +104,7 @@
 			children = (
 				F887D02D2F1AA8BF002BC544 /* UltimatePortfolio */,
 				F86D12812F753CD200D52E77 /* UltimatePortfolioTests */,
+				F80965192F7D1371006306BC /* UltimatePortfolioUITests */,
 				F887D02C2F1AA8BF002BC544 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,6 +114,7 @@
 			children = (
 				F887D02B2F1AA8BF002BC544 /* UltimatePortfolio.app */,
 				F86D12802F753CD200D52E77 /* UltimatePortfolioTests.xctest */,
+				F80965182F7D1371006306BC /* UltimatePortfolioUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,6 +122,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F80965172F7D1371006306BC /* UltimatePortfolioUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F80965202F7D1371006306BC /* Build configuration list for PBXNativeTarget "UltimatePortfolioUITests" */;
+			buildPhases = (
+				F80965142F7D1371006306BC /* Sources */,
+				F80965152F7D1371006306BC /* Frameworks */,
+				F80965162F7D1371006306BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F809651F2F7D1371006306BC /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				F80965192F7D1371006306BC /* UltimatePortfolioUITests */,
+			);
+			name = UltimatePortfolioUITests;
+			packageProductDependencies = (
+			);
+			productName = UltimatePortfolioUITests;
+			productReference = F80965182F7D1371006306BC /* UltimatePortfolioUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		F86D127F2F753CD200D52E77 /* UltimatePortfolioTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F86D12862F753CD200D52E77 /* Build configuration list for PBXNativeTarget "UltimatePortfolioTests" */;
@@ -105,6 +177,7 @@
 				F887D0292F1AA8BF002BC544 /* Resources */,
 			);
 			buildRules = (
+				F8BBE4862FC0806E00810EA6 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -128,6 +201,10 @@
 				LastSwiftUpdateCheck = 2620;
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
+					F80965172F7D1371006306BC = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = F887D02A2F1AA8BF002BC544;
+					};
 					F86D127F2F753CD200D52E77 = {
 						CreatedOnToolsVersion = 26.2;
 						TestTargetID = F887D02A2F1AA8BF002BC544;
@@ -144,6 +221,7 @@
 				en,
 				Base,
 				de,
+				"en-GB",
 			);
 			mainGroup = F887D0222F1AA8BF002BC544;
 			minimizedProjectReferenceProxies = 1;
@@ -154,11 +232,19 @@
 			targets = (
 				F887D02A2F1AA8BF002BC544 /* UltimatePortfolio */,
 				F86D127F2F753CD200D52E77 /* UltimatePortfolioTests */,
+				F80965172F7D1371006306BC /* UltimatePortfolioUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F80965162F7D1371006306BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F86D127E2F753CD200D52E77 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -176,6 +262,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F80965142F7D1371006306BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F86D127C2F753CD200D52E77 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -193,6 +286,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F809651F2F7D1371006306BC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F887D02A2F1AA8BF002BC544 /* UltimatePortfolio */;
+			targetProxy = F809651E2F7D1371006306BC /* PBXContainerItemProxy */;
+		};
 		F86D12852F753CD200D52E77 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F887D02A2F1AA8BF002BC544 /* UltimatePortfolio */;
@@ -201,6 +299,51 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		F80965212F7D1371006306BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WT2LC9AAXY;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stdehnbostel.UltimatePortfolioUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = UltimatePortfolio;
+			};
+			name = Debug;
+		};
+		F80965222F7D1371006306BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WT2LC9AAXY;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stdehnbostel.UltimatePortfolioUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = UltimatePortfolio;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		F86D12872F753CD200D52E77 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -379,6 +522,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -423,6 +567,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -457,6 +602,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F80965202F7D1371006306BC /* Build configuration list for PBXNativeTarget "UltimatePortfolioUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F80965212F7D1371006306BC /* Debug */,
+				F80965222F7D1371006306BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F86D12862F753CD200D52E77 /* Build configuration list for PBXNativeTarget "UltimatePortfolioTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
