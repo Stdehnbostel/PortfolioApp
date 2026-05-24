@@ -9,20 +9,25 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @EnvironmentObject var dataController: DataController
-
+    @StateObject private var viewModel: ViewModel
+    
+    init(dataController: DataController) {
+        let viewModel = ViewModel(dataController: dataController)
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
+    
     var body: some View {
-        List(selection: $dataController.selectedIssue) {
-            ForEach(dataController.issuesForSelectedFilter()) { issue in
+        List(selection: $viewModel.dataController.selectedIssue) {
+            ForEach(viewModel.dataController.issuesForSelectedFilter()) { issue in
                 IssueRow(issue: issue)
             }
-            .onDelete(perform: delete)
+            .onDelete(perform: viewModel.delete)
         }
         .navigationTitle("Issues")
         .searchable(
-            text: $dataController.filterText,
-            tokens: $dataController.filterTokens,
-            suggestedTokens: .constant(dataController.suggestedFilterTokens),
+            text: $viewModel.dataController.filterText,
+            tokens: $viewModel.dataController.filterTokens,
+            suggestedTokens: .constant(viewModel.dataController.suggestedFilterTokens),
             prompt: "Filter issues or type # to add tags") { tag in
                 Text(tag.tagName)
         }
@@ -30,17 +35,8 @@ struct ContentView: View {
             ContentViewToolbar()
         }
     }
-
-    func delete(_ offset: IndexSet) {
-        let issues = dataController.issuesForSelectedFilter()
-
-        for offset in offset {
-            let issue = issues[offset]
-            dataController.delete(issue)
-        }
-    }
 }
 
 #Preview {
-    ContentView()
+    ContentView(dataController: DataController.preview)
 }

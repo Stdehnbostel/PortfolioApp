@@ -16,9 +16,9 @@ struct UltimatePortfolioApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationSplitView {
-                SidebarView()
+                SidebarView(dataController: dataController)
             } content: {
-                ContentView()
+                ContentView(dataController: dataController)
             } detail: {
                 DetailView()
             }
