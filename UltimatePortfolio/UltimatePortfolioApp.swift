@@ -5,6 +5,7 @@
 //  Created by Stefan on 16.01.26.
 //
 
+import CoreSpotlight
 import SwiftUI
 import CoreData
 
@@ -32,6 +33,14 @@ struct UltimatePortfolioApp: App {
                     dataController.save()
                 }
             }
+            .onContinueUserActivity(CSSearchableItemActionType, perform: loadSpotlightItem)
+        }
+    }
+    
+    func loadSpotlightItem(_ userActivity: NSUserActivity) {
+        if let uniqueIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
+            dataController.selectedIssue = dataController.issue(with: uniqueIdentifier)
+            dataController.selectedFilter = .all
         }
     }
 }

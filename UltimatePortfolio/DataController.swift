@@ -37,6 +37,8 @@ class DataController: ObservableObject {
     /// The lone CloudKit container used to store all our data.
     let container: NSPersistentCloudKitContainer
 
+    var spotlightDelegate:NSCoreDataCoreSpotlightDelegate?
+    
     var suggestedFilterTokens: [Tag] {
         guard filterText.starts(with: "#") else {
             return []
@@ -83,15 +85,23 @@ class DataController: ObservableObject {
             using: remoteStoreChanged
         )
 
-        container.loadPersistentStores { _, error in
+        container.loadPersistentStores { [weak self] _, error in
             if let error {
                 fatalError("Fatal error loading persistent stores: \(error)")
+            }
+            
+            if let description = self?.container.persistentStoreDescriptions.first {
+                description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+                
+                if let coordinator = self?.container.persistentStoreCoordinator {
+                    self?.spotlightDelegate = NSCoreDataCoreSpotlightDelegate(forStoreWith: description, coordinator: coordinator)
+                }
             }
 
             // Enable Ui tets to start from a clear slate
             #if DEBUG
             if CommandLine.arguments.contains("enable-testing") {
-                self.deleteAll()
+                self?.deleteAll()
             }
             #endif
         }
@@ -314,5 +324,17 @@ class DataController: ObservableObject {
             // fatalError("Unknown criterion for award: \(award.criterion)")
             return false
         }
+    }
+    
+    func issue(with uniqueIdentifier: String) -> Issue? {
+        guard let url = URL(string: uniqueIdentifier) else {
+            return nil
+        }
+        
+        guard let id = container.persistentStoreCoordinator.managedObjectID(forURIRepresentation: url) else {
+            return nil
+        }
+        
+        return try? container.viewContext.existingObject(with: id) as? Issue
     }
 }
