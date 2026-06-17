@@ -10,7 +10,10 @@ import CoreData
 
 struct IssueView: View {
     @EnvironmentObject var dataController: DataController
+    @Environment(\.openURL) var openURL
     @ObservedObject var issue: Issue
+    
+    @State private var showingNotificationsError = false
 
     var body: some View {
         Form {
@@ -52,6 +55,18 @@ struct IssueView: View {
                     )
                 }
             }
+            
+            Section("Reminders") {
+                Toggle("Show Reminders", isOn: $issue.reminderEnabled.animation())
+                
+                if issue.reminderEnabled {
+                    DatePicker(
+                        "Reminder Time",
+                        selection: $issue.issueReminderDate,
+                        displayedComponents: .hourAndMinute
+                    )
+                }
+            }
         }
         .disabled(issue.isDeleted)
         .onReceive(issue.objectWillChange) { _ in
@@ -62,6 +77,41 @@ struct IssueView: View {
         }
         .toolbar {
             IssueViewToolbar(issue: issue)
+        }
+        .alert("Oops", isPresented: $showingNotificationsError) {
+            Button("Check Settings", action: showSettings)
+            Button("Cancel", role: .cancel) { }
+        } message: {
+            Text("There was a problem setting your notification. Please check you have notifications enabled.")
+        }
+        .onChange(of: issue.reminderEnabled) {
+            updateReminder()
+        }
+        .onChange(of: issue.reminderTime) {
+            updateReminder()
+        }
+    }
+    
+    func showSettings() {
+        guard let settingsUrl = URL(string: UIApplication.openNotificationSettingsURLString) else {
+            return
+        }
+        
+        openURL(settingsUrl)
+    }
+    
+    func updateReminder() {
+        dataController.removeReminders(for: issue)
+        
+        Task { @MainActor in
+            if issue.reminderEnabled {
+                let success = await dataController.addReminder(for: issue)
+                
+                if success == false {
+                    issue.reminderEnabled = false
+                    showingNotificationsError = true
+                }
+            }
         }
     }
 }

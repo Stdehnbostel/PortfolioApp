@@ -64,6 +64,11 @@ extension Issue {
             "Open"
         }
     }
+    
+    var issueReminderDate: Date {
+        get { reminderTime ?? .now }
+        set { reminderTime = newValue }
+    }
 }
 
 extension Issue: Comparable {

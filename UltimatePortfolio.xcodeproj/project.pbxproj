@@ -48,7 +48,7 @@
 			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
 			buildPhase = F887D0272F1AA8BF002BC544 /* Sources */;
 			membershipExceptions = (
-				Localizable.xcstrings,
+				Configuration/Localizable.xcstrings,
 			);
 		};
 /* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */

@@ -34,6 +34,11 @@ class DataController: ObservableObject {
     @Published var sortNewestFirst = true
 
     private var saveTask: Task<Void, Error>?
+    private var storeTask: Task<Void, Never>?
+    
+    /// The UserDefaults suite where we are saving user data
+    let defaults: UserDefaults
+    
     /// The lone CloudKit container used to store all our data.
     let container: NSPersistentCloudKitContainer
 
@@ -60,8 +65,15 @@ class DataController: ObservableObject {
     ///
     /// Defaults to permanent storage.
     /// - Parameter inMemory: Whether to store this data in temporary memory or not.
-    init(inMemory: Bool = false) {
+    /// - Parameter defaults: The UserDefaults suite were UserData should be stored
+    init(inMemory: Bool = false, defaults: UserDefaults = .standard) {
+        self.defaults = defaults
         self.container = NSPersistentCloudKitContainer(name: "Main", managedObjectModel: Self.model)
+        
+        self.storeTask = Task {
+            await monitorTransactions()
+        }
+        
         // for testing and previewing purposes, we create a
         // temporary in-memory database by wrting to /dev/null
         // so our data is destroyed after the app finishes running.
@@ -71,7 +83,7 @@ class DataController: ObservableObject {
 
         container.viewContext.automaticallyMergesChangesFromParent = true
         container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
-
+        
         // make sure that we watch iCloud for all changes to make sure
         // we keep our local UI in sync when a remote change happens.
         container.persistentStoreDescriptions.first?.setOption(
@@ -291,10 +303,22 @@ class DataController: ObservableObject {
         selectedIssue = issue
     }
 
-    func newTag() {
+    func newTag() -> Bool {
+        var shouldCreate = fullVersionUnlock
+        
+        if shouldCreate == false {
+            shouldCreate = count(for: Tag.fetchRequest()) < 3
+        }
+        
+        guard shouldCreate else {
+            return false
+        }
+        
         let tag = Tag(context: container.viewContext)
         tag.id = UUID()
         tag.name = NSLocalizedString("New Tag", comment: "Create a new tag")
+        
+        return true
     }
 
     func count<T>(for fetchRequest: NSFetchRequest<T>) -> Int {
