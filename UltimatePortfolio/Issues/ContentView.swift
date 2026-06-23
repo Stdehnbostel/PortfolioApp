@@ -7,8 +7,10 @@
 
 import SwiftUI
 import CoreData
+import StoreKit
 
 struct ContentView: View {
+    @Environment(\.requestReview) var requestReview
     @StateObject private var viewModel: ViewModel
     
     init(dataController: DataController) {
@@ -33,6 +35,22 @@ struct ContentView: View {
         }
         .toolbar {
             ContentViewToolbar()
+        }
+        .onAppear {
+            askForReview()
+        }
+        .onOpenURL(perform: openURL)
+    }
+    
+    func askForReview() {
+        if viewModel.shouldRequestReview {
+            requestReview()
+        }
+    }
+    
+    func openURL(_ url: URL) {
+        if url.absoluteString.contains("newIssue") {
+            viewModel.dataController.newIssue()
         }
     }
 }

@@ -43,6 +43,16 @@
 		F887D02B2F1AA8BF002BC544 /* UltimatePortfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UltimatePortfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F836BD392FE881F6006B3AFA /* Exceptions for "UltimatePortfolio" folder in "UltimatePortfolio" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = F887D02A2F1AA8BF002BC544 /* UltimatePortfolio */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
 		F8BBE4882FC0817300810EA6 /* Exceptions for "UltimatePortfolio" folder in "Compile Sources" phase from "UltimatePortfolio" target */ = {
 			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
@@ -67,6 +77,7 @@
 		F887D02D2F1AA8BF002BC544 /* UltimatePortfolio */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
+				F836BD392FE881F6006B3AFA /* Exceptions for "UltimatePortfolio" folder in "UltimatePortfolio" target */,
 				F8BBE4882FC0817300810EA6 /* Exceptions for "UltimatePortfolio" folder in "Compile Sources" phase from "UltimatePortfolio" target */,
 			);
 			path = UltimatePortfolio;
@@ -522,6 +533,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = UltimatePortfolio/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -567,6 +579,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = UltimatePortfolio/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;

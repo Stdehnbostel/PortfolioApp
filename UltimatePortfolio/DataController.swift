@@ -5,8 +5,9 @@
 //  Created by Stefan on 16.01.26.
 //
 
-import CoreData
 import Combine
+import CoreData
+import StoreKit
 import SwiftUI
 
 enum SortType: String {
@@ -41,6 +42,9 @@ class DataController: ObservableObject {
     
     /// The lone CloudKit container used to store all our data.
     let container: NSPersistentCloudKitContainer
+    
+    /// The StoreKit products we've loaded for the store.
+    @Published var products: [Product] = []
 
     var spotlightDelegate:NSCoreDataCoreSpotlightDelegate?
     
@@ -343,6 +347,8 @@ class DataController: ObservableObject {
             let fetchRequest = Tag.fetchRequest()
             let awardCount = count(for: fetchRequest)
             return awardCount >= award.value
+        case "unlock":
+            return fullVersionUnlock
         default:
             // unknown award criterion; this should never be allowed
             // fatalError("Unknown criterion for award: \(award.criterion)")
