@@ -38,6 +38,19 @@ extension ContentView {
                 dataController.delete(issue)
             }
         }
+        
+        func newIssue() {
+            dataController.newIssue()
+        }
+        
+        func openURL(_ url: URL) {
+            if url.absoluteString.contains("newIssue") {
+                newIssue()
+            } else if let issue = dataController.issue(with: url.absoluteString) {
+                dataController.selectedIssue = issue
+                dataController.selectedFilter = .all
+            }
+        }
     }
 }
 

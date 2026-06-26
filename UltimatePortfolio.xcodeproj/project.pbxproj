@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F8720D282FEC0470009B010F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8720D272FEC0470009B010F /* WidgetKit.framework */; };
+		F8720D2A2FEC0470009B010F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8720D292FEC0470009B010F /* SwiftUI.framework */; };
+		F8720D352FEC0472009B010F /* PortfolioWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F8720D252FEC0470009B010F /* PortfolioWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXBuildRule section */
 		F8BBE4862FC0806E00810EA6 /* PBXBuildRule */ = {
 			isa = PBXBuildRule;
@@ -35,11 +41,36 @@
 			remoteGlobalIDString = F887D02A2F1AA8BF002BC544;
 			remoteInfo = UltimatePortfolio;
 		};
+		F8720D332FEC0472009B010F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F887D0232F1AA8BF002BC544 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F8720D242FEC0470009B010F;
+			remoteInfo = PortfolioWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F8720D362FEC0472009B010F /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F8720D352FEC0472009B010F /* PortfolioWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		F80965182F7D1371006306BC /* UltimatePortfolioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UltimatePortfolioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F86D12802F753CD200D52E77 /* UltimatePortfolioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UltimatePortfolioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8720D252FEC0470009B010F /* PortfolioWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PortfolioWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8720D272FEC0470009B010F /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		F8720D292FEC0470009B010F /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		F8720D482FEC0A4E009B010F /* PortfolioWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PortfolioWidgetExtension.entitlements; sourceTree = "<group>"; };
 		F887D02B2F1AA8BF002BC544 /* UltimatePortfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UltimatePortfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -50,6 +81,26 @@
 				Info.plist,
 			);
 			target = F887D02A2F1AA8BF002BC544 /* UltimatePortfolio */;
+		};
+		F8720D3A2FEC0472009B010F /* Exceptions for "PortfolioWidget" folder in "PortfolioWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = F8720D242FEC0470009B010F /* PortfolioWidgetExtension */;
+		};
+		F8720D3C2FEC05F1009B010F /* Exceptions for "UltimatePortfolio" folder in "PortfolioWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Configuration/Localizable.xcstrings,
+				Configuration/Main.xcdatamodeld,
+				"DataController-StoreKit.swift",
+				DataController.swift,
+				"Extensions/Issue-CoreDataHelpers.swift",
+				"Extensions/Tag-CoreDataHelpers.swift",
+				Filters/Filter.swift,
+			);
+			target = F8720D242FEC0470009B010F /* PortfolioWidgetExtension */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -74,11 +125,20 @@
 			path = UltimatePortfolioTests;
 			sourceTree = "<group>";
 		};
+		F8720D2B2FEC0470009B010F /* PortfolioWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F8720D3A2FEC0472009B010F /* Exceptions for "PortfolioWidget" folder in "PortfolioWidgetExtension" target */,
+			);
+			path = PortfolioWidget;
+			sourceTree = "<group>";
+		};
 		F887D02D2F1AA8BF002BC544 /* UltimatePortfolio */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				F836BD392FE881F6006B3AFA /* Exceptions for "UltimatePortfolio" folder in "UltimatePortfolio" target */,
 				F8BBE4882FC0817300810EA6 /* Exceptions for "UltimatePortfolio" folder in "Compile Sources" phase from "UltimatePortfolio" target */,
+				F8720D3C2FEC05F1009B010F /* Exceptions for "UltimatePortfolio" folder in "PortfolioWidgetExtension" target */,
 			);
 			path = UltimatePortfolio;
 			sourceTree = "<group>";
@@ -100,6 +160,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F8720D222FEC0470009B010F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8720D2A2FEC0470009B010F /* SwiftUI.framework in Frameworks */,
+				F8720D282FEC0470009B010F /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F887D0282F1AA8BF002BC544 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -110,12 +179,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F8720D262FEC0470009B010F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F8720D272FEC0470009B010F /* WidgetKit.framework */,
+				F8720D292FEC0470009B010F /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F887D0222F1AA8BF002BC544 = {
 			isa = PBXGroup;
 			children = (
+				F8720D482FEC0A4E009B010F /* PortfolioWidgetExtension.entitlements */,
 				F887D02D2F1AA8BF002BC544 /* UltimatePortfolio */,
 				F86D12812F753CD200D52E77 /* UltimatePortfolioTests */,
 				F80965192F7D1371006306BC /* UltimatePortfolioUITests */,
+				F8720D2B2FEC0470009B010F /* PortfolioWidget */,
+				F8720D262FEC0470009B010F /* Frameworks */,
 				F887D02C2F1AA8BF002BC544 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -126,6 +207,7 @@
 				F887D02B2F1AA8BF002BC544 /* UltimatePortfolio.app */,
 				F86D12802F753CD200D52E77 /* UltimatePortfolioTests.xctest */,
 				F80965182F7D1371006306BC /* UltimatePortfolioUITests.xctest */,
+				F8720D252FEC0470009B010F /* PortfolioWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -179,6 +261,28 @@
 			productReference = F86D12802F753CD200D52E77 /* UltimatePortfolioTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		F8720D242FEC0470009B010F /* PortfolioWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F8720D392FEC0472009B010F /* Build configuration list for PBXNativeTarget "PortfolioWidgetExtension" */;
+			buildPhases = (
+				F8720D212FEC0470009B010F /* Sources */,
+				F8720D222FEC0470009B010F /* Frameworks */,
+				F8720D232FEC0470009B010F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F8720D2B2FEC0470009B010F /* PortfolioWidget */,
+			);
+			name = PortfolioWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = PortfolioWidgetExtension;
+			productReference = F8720D252FEC0470009B010F /* PortfolioWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		F887D02A2F1AA8BF002BC544 /* UltimatePortfolio */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F887D0362F1AA8C1002BC544 /* Build configuration list for PBXNativeTarget "UltimatePortfolio" */;
@@ -186,11 +290,13 @@
 				F887D0272F1AA8BF002BC544 /* Sources */,
 				F887D0282F1AA8BF002BC544 /* Frameworks */,
 				F887D0292F1AA8BF002BC544 /* Resources */,
+				F8720D362FEC0472009B010F /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 				F8BBE4862FC0806E00810EA6 /* PBXBuildRule */,
 			);
 			dependencies = (
+				F8720D342FEC0472009B010F /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				F887D02D2F1AA8BF002BC544 /* UltimatePortfolio */,
@@ -220,6 +326,9 @@
 						CreatedOnToolsVersion = 26.2;
 						TestTargetID = F887D02A2F1AA8BF002BC544;
 					};
+					F8720D242FEC0470009B010F = {
+						CreatedOnToolsVersion = 26.2;
+					};
 					F887D02A2F1AA8BF002BC544 = {
 						CreatedOnToolsVersion = 26.2;
 					};
@@ -244,6 +353,7 @@
 				F887D02A2F1AA8BF002BC544 /* UltimatePortfolio */,
 				F86D127F2F753CD200D52E77 /* UltimatePortfolioTests */,
 				F80965172F7D1371006306BC /* UltimatePortfolioUITests */,
+				F8720D242FEC0470009B010F /* PortfolioWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -257,6 +367,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F86D127E2F753CD200D52E77 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8720D232FEC0470009B010F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -287,6 +404,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F8720D212FEC0470009B010F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F887D0272F1AA8BF002BC544 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -306,6 +430,11 @@
 			isa = PBXTargetDependency;
 			target = F887D02A2F1AA8BF002BC544 /* UltimatePortfolio */;
 			targetProxy = F86D12842F753CD200D52E77 /* PBXContainerItemProxy */;
+		};
+		F8720D342FEC0472009B010F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F8720D242FEC0470009B010F /* PortfolioWidgetExtension */;
+			targetProxy = F8720D332FEC0472009B010F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -398,6 +527,73 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UltimatePortfolio.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/UltimatePortfolio";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F8720D372FEC0472009B010F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = PortfolioWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WT2LC9AAXY;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PortfolioWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PortfolioWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stdehnbostel.UltimatePortfolio.PortfolioWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F8720D382FEC0472009B010F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = PortfolioWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WT2LC9AAXY;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PortfolioWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PortfolioWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stdehnbostel.UltimatePortfolio.PortfolioWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -525,6 +721,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = UltimatePortfolio/UltimatePortfolio.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WT2LC9AAXY;
@@ -571,6 +768,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = UltimatePortfolio/UltimatePortfolio.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WT2LC9AAXY;
@@ -629,6 +827,15 @@
 			buildConfigurations = (
 				F86D12872F753CD200D52E77 /* Debug */,
 				F86D12882F753CD200D52E77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F8720D392FEC0472009B010F /* Build configuration list for PBXNativeTarget "PortfolioWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8720D372FEC0472009B010F /* Debug */,
+				F8720D382FEC0472009B010F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

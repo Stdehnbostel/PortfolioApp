@@ -13,6 +13,8 @@ struct ContentView: View {
     @Environment(\.requestReview) var requestReview
     @StateObject private var viewModel: ViewModel
     
+    private let newIssueActivity = "com.stdehnbostel.UltimatePortfolio.newIssue"
+    
     init(dataController: DataController) {
         let viewModel = ViewModel(dataController: dataController)
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -39,7 +41,12 @@ struct ContentView: View {
         .onAppear {
             askForReview()
         }
-        .onOpenURL(perform: openURL)
+        .onOpenURL(perform: viewModel.openURL)
+        .userActivity(newIssueActivity) { activity in
+            activity.isEligibleForPrediction = true
+            activity.title = "New Issue"
+        }
+        .onContinueUserActivity(newIssueActivity, perform: resumeActivity)
     }
     
     func askForReview() {
@@ -48,10 +55,8 @@ struct ContentView: View {
         }
     }
     
-    func openURL(_ url: URL) {
-        if url.absoluteString.contains("newIssue") {
-            viewModel.dataController.newIssue()
-        }
+    func resumeActivity(_ userActivity: NSUserActivity) {
+        viewModel.newIssue()
     }
 }
 
