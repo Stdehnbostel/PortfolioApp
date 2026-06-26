@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AwardsView: View {
+    @Environment(\.dismiss) var dismiss
     @StateObject private var viewModel: ViewModel
     @State private var showAwardDetails = false
     
@@ -36,13 +37,20 @@ struct AwardsView: View {
                                 .frame(width: 100, height: 100)
                                 .foregroundStyle(viewModel.color(for: award))
                         }
+                        .buttonStyle(.borderless)
                         .accessibilityLabel(viewModel.label(for: award))
                         .accessibilityHint(award.description)
                     }
                 }
             }
             .navigationTitle("Awards")
+            .toolbar {
+                Button("Close") {
+                    dismiss()
+                }
+            }
         }
+        .macFrame(minWidth: 600)
         .alert(awardTitle, isPresented: $showAwardDetails) {
         } message: {
             Text(viewModel.selectedAward.description)

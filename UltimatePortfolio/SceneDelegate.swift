@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+#if os(iOS)
 class SceneDelegate: NSObject, UIWindowSceneDelegate {
     func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         guard let url = URL(string: shortcutItem.type) else {
@@ -25,3 +26,4 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         }
     }
 }
+#endif

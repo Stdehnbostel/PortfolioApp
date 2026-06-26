@@ -19,11 +19,13 @@ struct SidebarViewToolbar: View {
         .sheet(isPresented: $showingStore) {
             StoreView()
         }
+        .help("Add Tag")
         Button {
             showingAwards.toggle()
         } label: {
             Label("Show Awards", systemImage: "rosette")
         }
+        .help("Show Awards")
 
         #if DEBUG
         Button {

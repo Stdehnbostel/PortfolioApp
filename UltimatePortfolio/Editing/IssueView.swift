@@ -23,6 +23,7 @@ struct IssueView: View {
                         "Title",
                         text: $issue.issueTitle, prompt: Text("Enter your issue title here")
                     )
+                    .labelsHidden()
 
                     Text(
                         // swiftlint:disable:next line_length
@@ -53,6 +54,7 @@ struct IssueView: View {
                         "Description",
                         text: $issue.issueContent, prompt: Text("Enter your issue description here"), axis: .vertical
                     )
+                    .labelsHidden()
                 }
             }
             
@@ -68,6 +70,7 @@ struct IssueView: View {
                 }
             }
         }
+        .formStyle(.grouped)
         .disabled(issue.isDeleted)
         .onReceive(issue.objectWillChange) { _ in
             dataController.queueSave()
@@ -79,7 +82,13 @@ struct IssueView: View {
             IssueViewToolbar(issue: issue)
         }
         .alert("Oops", isPresented: $showingNotificationsError) {
+            #if os(macOS)
+            SettingsLink {
+                Text("Check Settings")
+            }
+            #else
             Button("Check Settings", action: showSettings)
+            #endif
             Button("Cancel", role: .cancel) { }
         } message: {
             Text("There was a problem setting your notification. Please check you have notifications enabled.")
@@ -92,6 +101,7 @@ struct IssueView: View {
         }
     }
     
+    #if os(iOS)
     func showSettings() {
         guard let settingsUrl = URL(string: UIApplication.openNotificationSettingsURLString) else {
             return
@@ -99,6 +109,7 @@ struct IssueView: View {
         
         openURL(settingsUrl)
     }
+    #endif
     
     func updateReminder() {
         dataController.removeReminders(for: issue)
