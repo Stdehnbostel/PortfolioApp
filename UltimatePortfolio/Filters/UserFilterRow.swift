@@ -15,7 +15,7 @@ struct UserFilterRow: View {
     var body: some View {
         NavigationLink(value: filter) {
             Label(filter.name, systemImage: filter.icon)
-                .badge(filter.activeIssueCount)
+                .numberBadge(filter.activeIssueCount)
                 .contextMenu {
                     Button {
                         rename(filter)

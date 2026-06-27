@@ -10,7 +10,9 @@ import CoreData
 import StoreKit
 
 struct ContentView: View {
+    #if !os(watchOS)
     @Environment(\.requestReview) var requestReview
+    #endif
     @StateObject private var viewModel: ViewModel
     
     private let newIssueActivity = "com.stdehnbostel.UltimatePortfolio.newIssue"
@@ -23,12 +25,17 @@ struct ContentView: View {
     var body: some View {
         List(selection: $viewModel.selectedIssue) {
             ForEach(viewModel.dataController.issuesForSelectedFilter()) { issue in
+                #if os(watchOS)
+                IssueRowWatch(issue: issue)
+                #else
                 IssueRow(issue: issue)
+                #endif
             }
             .onDelete(perform: viewModel.delete)
         }
         .macFrame(minWidth: 220)
         .navigationTitle("Issues")
+        #if !os(watchOS)
         .searchable(
             text: $viewModel.filterText,
             tokens: $viewModel.filterTokens,
@@ -36,6 +43,7 @@ struct ContentView: View {
             prompt: "Filter issues or type # to add tags") { tag in
                 Text(tag.tagName)
         }
+        #endif
         .toolbar {
             ContentViewToolbar()
         }
@@ -53,9 +61,11 @@ struct ContentView: View {
     }
     
     func askForReview() {
+        #if !os(watchOS)
         if viewModel.shouldRequestReview {
             requestReview()
         }
+        #endif
     }
     
     func resumeActivity(_ userActivity: NSUserActivity) {

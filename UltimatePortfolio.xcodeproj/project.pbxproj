@@ -10,6 +10,7 @@
 		F80931AA2FEF18C6003CFDAD /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8720D272FEC0470009B010F /* WidgetKit.framework */; };
 		F80931AB2FEF18C6003CFDAD /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8720D292FEC0470009B010F /* SwiftUI.framework */; };
 		F80931B62FEF18C8003CFDAD /* PortfolioWidgetMacExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F80931A92FEF18C6003CFDAD /* PortfolioWidgetMacExtension.appex */; platformFilters = (macos, ); settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F80931DD2FF06235003CFDAD /* PortfolioWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F80931D32FF06233003CFDAD /* PortfolioWatch Watch App.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F8720D282FEC0470009B010F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8720D272FEC0470009B010F /* WidgetKit.framework */; };
 		F8720D2A2FEC0470009B010F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8720D292FEC0470009B010F /* SwiftUI.framework */; };
 		F8720D352FEC0472009B010F /* PortfolioWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F8720D252FEC0470009B010F /* PortfolioWidgetExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -61,6 +62,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		F80931E12FF06235003CFDAD /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				F80931DD2FF06235003CFDAD /* PortfolioWatch Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F8720D362FEC0472009B010F /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -78,6 +90,7 @@
 /* Begin PBXFileReference section */
 		F80931A92FEF18C6003CFDAD /* PortfolioWidgetMacExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PortfolioWidgetMacExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F80931C62FEF19DA003CFDAD /* PortfolioWidgetMacExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PortfolioWidgetMacExtension.entitlements; sourceTree = "<group>"; };
+		F80931D32FF06233003CFDAD /* PortfolioWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PortfolioWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F80965182F7D1371006306BC /* UltimatePortfolioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UltimatePortfolioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F86D12802F753CD200D52E77 /* UltimatePortfolioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UltimatePortfolioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8720D252FEC0470009B010F /* PortfolioWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PortfolioWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,10 +129,57 @@
 			);
 			target = F80931A82FEF18C6003CFDAD /* PortfolioWidgetMacExtension */;
 		};
+		F80931E32FF062BE003CFDAD /* Exceptions for "UltimatePortfolio" folder in "PortfolioWatch Watch App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AppDelegate.swift,
+				Assets.xcassets,
+				Awards/Award.swift,
+				Awards/Awards.json,
+				Awards/AwardsView.swift,
+				Awards/AwardsViewModel.swift,
+				Colors.xcassets,
+				Configuration/Localizable.xcstrings,
+				Configuration/Main.xcdatamodeld,
+				"DataController-Awards.swift",
+				"DataController-Notifications.swift",
+				"DataController-StoreKit.swift",
+				DataController.swift,
+				Editing/DetailView.swift,
+				Editing/IssueView.swift,
+				Editing/IssueViewToolbar.swift,
+				Editing/NoIssueView.swift,
+				Editing/TagsMenuView.swift,
+				"Extensions/Bundle-Decodeable.swift",
+				"Extensions/Issue-CoreDataHelpers.swift",
+				"Extensions/Tag-CoreDataHelpers.swift",
+				Filters/Filter.swift,
+				Filters/SidebarView.swift,
+				Filters/SidebarViewModel.swift,
+				Filters/SidebarViewToolbar.swift,
+				Filters/SmartFilterRow.swift,
+				Filters/UserFilterRow.swift,
+				Issues/ContentView.swift,
+				Issues/ContentViewModel.swift,
+				Issues/ContentViewToolbar.swift,
+				Issues/IssueRow.swift,
+				Issues/IssueRowViewModeModel.swift,
+				Issues/IssueRowWatch.swift,
+				PlatformAdjustments/InlineNavigationBar.swift,
+				PlatformAdjustments/MacFrame.swift,
+				PlatformAdjustments/NumberBadge.swift,
+				PlatformAdjustments/ToolbarItemPlacement.swift,
+				SceneDelegate.swift,
+				Store/StoreView.swift,
+				UltimatePortfolioApp.swift,
+			);
+			target = F80931D22FF06233003CFDAD /* PortfolioWatch Watch App */;
+		};
 		F836BD392FE881F6006B3AFA /* Exceptions for "UltimatePortfolio" folder in "UltimatePortfolio" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				Issues/IssueRowWatch.swift,
 			);
 			target = F887D02A2F1AA8BF002BC544 /* UltimatePortfolio */;
 		};
@@ -164,6 +224,11 @@
 			path = PortfolioWidgetMac;
 			sourceTree = "<group>";
 		};
+		F80931D42FF06233003CFDAD /* PortfolioWatch Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "PortfolioWatch Watch App";
+			sourceTree = "<group>";
+		};
 		F80965192F7D1371006306BC /* UltimatePortfolioUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = UltimatePortfolioUITests;
@@ -190,6 +255,7 @@
 				F8BBE4882FC0817300810EA6 /* Exceptions for "UltimatePortfolio" folder in "Compile Sources" phase from "UltimatePortfolio" target */,
 				F8720D3C2FEC05F1009B010F /* Exceptions for "UltimatePortfolio" folder in "PortfolioWidgetExtension" target */,
 				F80931C32FEF1989003CFDAD /* Exceptions for "UltimatePortfolio" folder in "PortfolioWidgetMacExtension" target */,
+				F80931E32FF062BE003CFDAD /* Exceptions for "UltimatePortfolio" folder in "PortfolioWatch Watch App" target */,
 			);
 			path = UltimatePortfolio;
 			sourceTree = "<group>";
@@ -203,6 +269,13 @@
 			files = (
 				F80931AB2FEF18C6003CFDAD /* SwiftUI.framework in Frameworks */,
 				F80931AA2FEF18C6003CFDAD /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F80931D02FF06233003CFDAD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +331,7 @@
 				F80965192F7D1371006306BC /* UltimatePortfolioUITests */,
 				F8720D2B2FEC0470009B010F /* PortfolioWidget */,
 				F80931AC2FEF18C6003CFDAD /* PortfolioWidgetMac */,
+				F80931D42FF06233003CFDAD /* PortfolioWatch Watch App */,
 				F8720D262FEC0470009B010F /* Frameworks */,
 				F887D02C2F1AA8BF002BC544 /* Products */,
 			);
@@ -271,6 +345,7 @@
 				F80965182F7D1371006306BC /* UltimatePortfolioUITests.xctest */,
 				F8720D252FEC0470009B010F /* PortfolioWidgetExtension.appex */,
 				F80931A92FEF18C6003CFDAD /* PortfolioWidgetMacExtension.appex */,
+				F80931D32FF06233003CFDAD /* PortfolioWatch Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -299,6 +374,28 @@
 			productName = PortfolioWidgetMacExtension;
 			productReference = F80931A92FEF18C6003CFDAD /* PortfolioWidgetMacExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
+		};
+		F80931D22FF06233003CFDAD /* PortfolioWatch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F80931DE2FF06235003CFDAD /* Build configuration list for PBXNativeTarget "PortfolioWatch Watch App" */;
+			buildPhases = (
+				F80931CF2FF06233003CFDAD /* Sources */,
+				F80931D02FF06233003CFDAD /* Frameworks */,
+				F80931D12FF06233003CFDAD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F80931D42FF06233003CFDAD /* PortfolioWatch Watch App */,
+			);
+			name = "PortfolioWatch Watch App";
+			packageProductDependencies = (
+			);
+			productName = "PortfolioWatch Watch App";
+			productReference = F80931D32FF06233003CFDAD /* PortfolioWatch Watch App.app */;
+			productType = "com.apple.product-type.application";
 		};
 		F80965172F7D1371006306BC /* UltimatePortfolioUITests */ = {
 			isa = PBXNativeTarget;
@@ -376,6 +473,7 @@
 				F887D0282F1AA8BF002BC544 /* Frameworks */,
 				F887D0292F1AA8BF002BC544 /* Resources */,
 				F8720D362FEC0472009B010F /* Embed Foundation Extensions */,
+				F80931E12FF06235003CFDAD /* Embed Watch Content */,
 			);
 			buildRules = (
 				F8BBE4862FC0806E00810EA6 /* PBXBuildRule */,
@@ -405,6 +503,9 @@
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					F80931A82FEF18C6003CFDAD = {
+						CreatedOnToolsVersion = 26.2;
+					};
+					F80931D22FF06233003CFDAD = {
 						CreatedOnToolsVersion = 26.2;
 					};
 					F80965172F7D1371006306BC = {
@@ -444,12 +545,20 @@
 				F80965172F7D1371006306BC /* UltimatePortfolioUITests */,
 				F8720D242FEC0470009B010F /* PortfolioWidgetExtension */,
 				F80931A82FEF18C6003CFDAD /* PortfolioWidgetMacExtension */,
+				F80931D22FF06233003CFDAD /* PortfolioWatch Watch App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F80931A72FEF18C6003CFDAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F80931D12FF06233003CFDAD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -488,6 +597,13 @@
 
 /* Begin PBXSourcesBuildPhase section */
 		F80931A52FEF18C6003CFDAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F80931CF2FF06233003CFDAD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -619,6 +735,75 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		F80931DF2FF06235003CFDAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "PortfolioWatch Watch App/PortfolioWatch Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WT2LC9AAXY;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = PortfolioWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.stdehnbostel.UltimatePortfolio;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stdehnbostel.UltimatePortfolio.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Debug;
+		};
+		F80931E02FF06235003CFDAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "PortfolioWatch Watch App/PortfolioWatch Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WT2LC9AAXY;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = PortfolioWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.stdehnbostel.UltimatePortfolio;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stdehnbostel.UltimatePortfolio.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 26.2;
 			};
 			name = Release;
 		};
@@ -785,7 +970,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -848,7 +1033,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1001,6 +1186,15 @@
 			buildConfigurations = (
 				F80931B82FEF18C8003CFDAD /* Debug */,
 				F80931B92FEF18C8003CFDAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F80931DE2FF06235003CFDAD /* Build configuration list for PBXNativeTarget "PortfolioWatch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F80931DF2FF06235003CFDAD /* Debug */,
+				F80931E02FF06235003CFDAD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

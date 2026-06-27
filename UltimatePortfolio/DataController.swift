@@ -46,8 +46,10 @@ class DataController: ObservableObject {
     
     /// The StoreKit products we've loaded for the store.
     @Published var products: [Product] = []
-
+    
+    #if !os(watchOS)
     var spotlightDelegate:NSCoreDataCoreSpotlightDelegate?
+    #endif
     
     var suggestedFilterTokens: [Tag] {
         guard filterText.starts(with: "#") else {
@@ -120,9 +122,11 @@ class DataController: ObservableObject {
             if let description = self?.container.persistentStoreDescriptions.first {
                 description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
                 
+                #if !os(watchOS)
                 if let coordinator = self?.container.persistentStoreCoordinator {
                     self?.spotlightDelegate = NSCoreDataCoreSpotlightDelegate(forStoreWith: description, coordinator: coordinator)
                 }
+                #endif
             }
 
             // Enable Ui tets to start from a clear slate

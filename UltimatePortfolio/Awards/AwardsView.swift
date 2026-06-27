@@ -44,11 +44,13 @@ struct AwardsView: View {
                 }
             }
             .navigationTitle("Awards")
+            #if !os(watchOS)
             .toolbar {
                 Button("Close") {
                     dismiss()
                 }
             }
+            #endif
         }
         .macFrame(minWidth: 600)
         .alert(awardTitle, isPresented: $showAwardDetails) {
