@@ -127,14 +127,9 @@ class DataController: ObservableObject {
                     self?.spotlightDelegate = NSCoreDataCoreSpotlightDelegate(forStoreWith: description, coordinator: coordinator)
                 }
                 #endif
+                
+                self?.checkForTestEnvironment()
             }
-
-            // Enable Ui tets to start from a clear slate
-            #if DEBUG
-            if CommandLine.arguments.contains("enable-testing") {
-                self?.deleteAll()
-            }
-            #endif
         }
     }
 

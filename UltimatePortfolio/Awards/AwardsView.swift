@@ -68,4 +68,5 @@ struct AwardsView: View {
 
 #Preview {
     AwardsView(dataController: DataController.preview)
+        .environmentObject(DataController(inMemory: true))
 }

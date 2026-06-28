@@ -122,6 +122,7 @@
 			membershipExceptions = (
 				Configuration/Main.xcdatamodeld,
 				"DataController-StoreKit.swift",
+				"DataController-Testing.swift",
 				DataController.swift,
 				"Extensions/Issue-CoreDataHelpers.swift",
 				"Extensions/Tag-CoreDataHelpers.swift",
@@ -144,6 +145,7 @@
 				"DataController-Awards.swift",
 				"DataController-Notifications.swift",
 				"DataController-StoreKit.swift",
+				"DataController-Testing.swift",
 				DataController.swift,
 				Editing/DetailView.swift,
 				Editing/IssueView.swift,
@@ -196,6 +198,7 @@
 				Configuration/Localizable.xcstrings,
 				Configuration/Main.xcdatamodeld,
 				"DataController-StoreKit.swift",
+				"DataController-Testing.swift",
 				DataController.swift,
 				"Extensions/Issue-CoreDataHelpers.swift",
 				"Extensions/Tag-CoreDataHelpers.swift",

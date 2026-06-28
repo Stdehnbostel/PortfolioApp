@@ -10,6 +10,7 @@ import StoreKit
 
 struct StoreView: View {
     @EnvironmentObject var dataController: DataController
+    @Environment(\.purchase) var purchaseAction
     @Environment(\.dismiss) var dismiss
     @State private var showingPurchseError = false
     
@@ -131,7 +132,10 @@ struct StoreView: View {
             return
         }
         Task { @MainActor in
-            try await dataController.purchase(product)
+            let result = try await purchaseAction(product)
+            if case let .success(validation) = result {
+                try await dataController.finalize(validation.payloadValue)
+            }
         }
     }
     
